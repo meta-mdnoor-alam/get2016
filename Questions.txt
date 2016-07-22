@@ -1,0 +1,5 @@
+Enter your name :,(Text Type), 
+Enter your age  :,(Numeric Type), 
+Overall rating  :,(Single Select Type),(1/2/3/4/5)
+Enter area of improvement  :,(Multi Select Type),(Service Quality/Communication/Delivery Process)
+Give your feedback  :,(Text Type), 
