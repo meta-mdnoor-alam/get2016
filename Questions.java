@@ -1,12 +1,12 @@
 package Session2;
 
-/**To implement Question class to compare the lines of the question to sort.
+/**To sort questions based on question string.
  * @author Noor
  */
-public class Questions implements Comparable<Object> {
-
+public class Questions implements Comparable<Questions> {
+	
 	private String questionString;
-
+	
 	/**
 	 * Constructor
 	 * @param questionString
@@ -14,19 +14,22 @@ public class Questions implements Comparable<Object> {
 	public Questions(String questionString){
 		this.questionString = questionString;
 	}
-
+	
+	/**
+	 * @return question string
+	 */
+	public String getQuestion() {
+		return questionString;
+	}
+	
 	/**
 	 * compareTo should return < 0 if this is supposed to be
 	 * less than other, > 0 if this is supposed to be greater than
-	 * other and 0 if they are supposed to be equal.
+	 * other and 0 if they are supposed to be equal
 	 */
 	@Override
-	public int compareTo(Object secondObject) {
-
-		Questions question = (Questions)secondObject;
-
-		int last=question.questionString.compareTo(questionString);
-
-		return (last==0 ? question.questionString.compareTo(questionString) : last);
-	}
+	public int compareTo(Questions other){
+        int last = this.questionString.compareTo(other.questionString);
+        return last;
+    }
 }
