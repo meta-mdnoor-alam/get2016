@@ -18,7 +18,7 @@ public class SortQuestions {
 	 * Constructor
 	 */
 	public SortQuestions() {
-		readQuestionsFromFile=new ReadQuestions("C:\\Users\\Noor\\Desktop\\Metacube\\workspace\\OOPs\\src\\Session2\\Questions.txt");
+		readQuestionsFromFile=new ReadQuestions("Questions.txt");
 	}
 	
 	/**
@@ -27,15 +27,19 @@ public class SortQuestions {
 	 */
 	public static void main(String[] args) throws IOException {
 
-		List<String> questionsList = new ArrayList<String>();
 		sortQuestions=new SortQuestions();
+		List<Questions> questionsList = new ArrayList<Questions>();
+		List<String> readListFromFile=readQuestionsFromFile.readLine();
 		
-		questionsList=readQuestionsFromFile.readLine();
+		for (String temp : readListFromFile) {
+			Questions questionClassObject=new Questions(temp.split("[,]")[0]);
+			questionsList.add(questionClassObject);
+		}
 		
 		Collections.sort(questionsList);
 		
-		for (String string : questionsList) {
-			System.out.println(string);
+		for (Questions question : questionsList) {
+			System.out.println(question.getQuestion());
 		}
 	}
 }
