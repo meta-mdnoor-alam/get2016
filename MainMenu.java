@@ -13,9 +13,10 @@ public class MainMenu {
 		Menu menu=new Menu();
 		UserInteractor.getUserInput(menu,"Main Menu");
 		
-		new Stack();
+		Stack.initializeStack();
 		Stack.pointer=0;
 		Stack.menu[Stack.pointer]=menu;
+		
 		new Display().display(menu,1);
 	}
 

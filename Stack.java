@@ -7,18 +7,6 @@ package Session5;
 public class Stack {
 	static Menu[] menu;
 	static int pointer;
-
-	/**
-	 * Construct for class Stack.
-	 */
-	public Stack() {
-		Stack.menu=new Menu[10];
-		Stack.pointer=-1;
-		
-		for(int index=0;index<10;index++) {
-			menu[index]=new Menu();
-		}
-	}
 	
 	/**
 	 * @return get the menu on calling.
@@ -33,5 +21,14 @@ public class Stack {
 	 */
 	public void setMenu(Menu[] menu) {
 		Stack.menu = menu;
+	}
+	
+	public static void initializeStack() {
+		Stack.menu=new Menu[10];
+		Stack.pointer=-1;
+		
+		for(int index=0;index<10;index++) {
+			Stack.menu[index]=new Menu();
+		}
 	}
 }
