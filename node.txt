@@ -1,0 +1,5 @@
+1,noor,male,jaipur,user
+2,pawan,male,delhi,user
+3,diksha,female,chennai,user
+4,manoj,male,shimla,user
+5,sagrica,female,goa,user
