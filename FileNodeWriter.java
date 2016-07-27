@@ -29,9 +29,12 @@ public class FileNodeWriter {
 		}
 	}
 	
-	public boolean writeNode(Node node) throws IOException {
+	public boolean writeUserNode(UserNode userNode) throws IOException {
 		if (canWrite()==true) {
-			String singleNode=node.getNodeId()+","+node.getName()+","+node.getGender()+","+node.getCity()+","+node.getType();
+			String singleNode;
+			singleNode=userNode.getNodeId()+","+userNode.getProfile().getName()+","+userNode.getUserProfile().getGender()+","+
+					   userNode.getProfile().getCity()+","+userNode.getType()+","+userNode.getUserProfile().getAge()+","+
+					   userNode.getUserProfile().getFriendCount();
 			fileObject.newLine();
 			fileObject.write(singleNode);
 			return true;
@@ -39,7 +42,19 @@ public class FileNodeWriter {
 		return false;
 	}
 	
-	public boolean writeConnection(Node firstNode, Node secondNode) throws IOException {
+	public boolean writeOrgNode(OrganisationNode orgNode) throws IOException {
+		if (canWrite()==true) {
+			String singleNode;
+			singleNode=orgNode.getNodeId()+","+orgNode.getProfile().getName()+","+orgNode.getOrganisationProfile().getSector()+","+
+					   orgNode.getProfile().getCity()+","+orgNode.getType();
+			fileObject.newLine();
+			fileObject.write(singleNode);
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean writeConnection(UserNode firstNode, UserNode secondNode) throws IOException {
 		if (canWrite()==true) {
 			String connection=firstNode.getNodeId()+"-"+secondNode.getNodeId();
 			fileObject.newLine();
