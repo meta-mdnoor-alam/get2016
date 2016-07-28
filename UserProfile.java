@@ -8,13 +8,11 @@ public class UserProfile extends Profile {
 
 	private int age;
 	private String gender;
-	private int friendCount;
 	
-	public UserProfile(String name, String city, String type, int age, String gender, int friendCount) {
-		super(name, city, type);
+	public UserProfile(String name, String city, int age, String gender) {
+		super(name, city, "user");
 		this.age=age;
 		this.gender=gender;
-		this.friendCount=friendCount;
 	}
 	
 	public int getAge() {
@@ -33,11 +31,11 @@ public class UserProfile extends Profile {
 		this.gender=gender;
 	}
 	
-	public int getFriendCount() {
+	/*public int getFriendCount() {
 		return friendCount;
 	}
 	
-	public void setFriendCount(int friendCount) {
-		this.friendCount=friendCount;
-	}
+	public void setFriendCount() {
+		this.friendCount=;
+	}*/
 }

@@ -1,8 +1,8 @@
-1,noor,male,jaipur,user,22,5
-2,pawan,male,delhi,user,20,6
-3,diksha,female,chennai,user,22,2
-4,manoj,male,shimla,user,15,0
-5,sagrica,female,goa,user,23,3
-6,metacube,private,jaipur,organisation
-7,infosys,private,noida,organisation
-8,cris,public,new delhi,organisation
+0,noor,male,jaipur,user,22
+1,pawan,male,delhi,user,20
+2,diksha,female,chennai,user,22
+3,manoj,male,shimla,user,15
+4,sagrica,female,goa,user,23
+5,metacube,private,jaipur,organisation
+6,infosys,private,noida,organisation
+7,cris,public,new delhi,organisation

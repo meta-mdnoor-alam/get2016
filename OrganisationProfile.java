@@ -8,8 +8,8 @@ public class OrganisationProfile extends Profile {
 
 	private String sector;
 	
-	public OrganisationProfile(String name, String city, String type, String sector) {
-		super(name, city, type);
+	public OrganisationProfile(String name, String city, String sector) {
+		super(name, city, "organisation");
 		this.sector=sector;
 	}
 	
