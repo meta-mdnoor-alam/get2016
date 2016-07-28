@@ -25,7 +25,8 @@ public class Graph {
 	}
 	
 	public void addNode(String type, Profile profile) throws IOException {
-		int nodeId=AdjacencyMatrix.adjacencyMatrix.length;
+		//int nodeId=AdjacencyMatrix.adjacencyMatrix.length;
+		int nodeId=9;
 		Node node=new Node(nodeId, type, profile);
 		FileWriteHandler fileObject=new FileWriteHandler(nodeFileName);
 		if (type.equalsIgnoreCase("user")) {

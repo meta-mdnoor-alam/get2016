@@ -34,10 +34,12 @@ public class Display {
 		case 1:
 			addProfile(scanner);
 			break;
-
+		case 2:
+			viewWholeNetwork();
+			break;
 		default:
 			System.out.println("\n\nEnter valid choice...");
-			break;
+			firstMenu(scanner);
 		}
 	}
 	
@@ -75,6 +77,9 @@ public class Display {
 			}
 			graph.addNode("organisation", new OrganisationProfile(orgName, city, sector));
 		}
+	}
+	
+	public void viewWholeNetwork() {
 		
 	}
 }
