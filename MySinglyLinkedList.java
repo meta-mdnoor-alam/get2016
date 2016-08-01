@@ -141,16 +141,24 @@ public class MySinglyLinkedList<N> implements MyList<N> {
 	public N remove(int index) {
 		int i=0;
 		size();
-		Node<N> tempCurrent=start;
-		while (i<index) {
-			tempCurrent=tempCurrent.next;
-			i++;
+		if (index<0 || index>size) {
+			throw new IllegalArgumentException();
+		} else {
+			Node<N> tempPrevious=start;
+			while (i<index-1) {
+				tempPrevious=tempPrevious.next;
+				i++;
+			}
+			Node<N> nodeToDelete=tempPrevious.next;
+			if (index==size-1) {
+				tempPrevious.next=null;
+			} else {
+				tempPrevious.next=nodeToDelete.next;
+				nodeToDelete.next=null;
+			}
+			size--;
+			return nodeToDelete.data;
 		}
-		Node<N> nodeToDelete=tempCurrent.next;
-		tempCurrent.next=nodeToDelete.next;
-		nodeToDelete.next=null;
-		size--;
-		return nodeToDelete.data;
 	}
 
 	@Override
@@ -189,7 +197,7 @@ public class MySinglyLinkedList<N> implements MyList<N> {
 			return null;
 		}
 		Node<N> temp=start;
-		for (int i = 0; i <= index; i++) {
+		for (int i = 0; i < index; i++) {
 			temp=temp.next;
 		}
 		return temp.data;
