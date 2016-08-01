@@ -1,7 +1,7 @@
 package Session1;
 
 /**
- * 
+ * Class to implement the concept of generic singly-linkedlist by implementing the MyList interface.
  * @author Noor
  */
 public class MySinglyLinkedList<N> implements MyList<N> {
@@ -9,12 +9,21 @@ public class MySinglyLinkedList<N> implements MyList<N> {
 	private Node<N> start;
 	
 	int size;
-
+ 
+	/**
+	 * Default constructor.
+	 */
 	public MySinglyLinkedList() {
 		start=null;
 		size=0;
 	}
 	
+	/**
+	 * Generic Inner class to make a node of the singly-linked list with
+	 * next pointing references of the Node type.
+	 * @author Noor
+	 * @param <N> Generic type of the node data.
+	 */
 	private static class Node<N> {
 		N data;
 		Node<N> next;
@@ -59,6 +68,11 @@ public class MySinglyLinkedList<N> implements MyList<N> {
 		return true;
 	}
 	
+	/**
+	 * Method to add element at the first location of the list.
+	 * @param element
+	 * @return success or not.
+	 */
 	public boolean addFirst(N element) {
 		Node<N> node=new Node<N>(element, null);
 		if (start==null) {
@@ -96,7 +110,6 @@ public class MySinglyLinkedList<N> implements MyList<N> {
 
 	@Override
 	public void addAll(MyList<N> list) {
-		// TODO Auto-generated method stub
 		for (int i = 0; i < list.size(); i++) {
 			add(list.get(i));
 		}
@@ -104,7 +117,6 @@ public class MySinglyLinkedList<N> implements MyList<N> {
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
 		size();
 		if (size==0) {
 			return true;
@@ -114,7 +126,6 @@ public class MySinglyLinkedList<N> implements MyList<N> {
 
 	@Override
 	public boolean contains(Object obj) {
-		// TODO Auto-generated method stub
 		Node<N> temp=start;
 		size();
 		for (int i = 0; i < size; i++) {
@@ -128,7 +139,6 @@ public class MySinglyLinkedList<N> implements MyList<N> {
 
 	@Override
 	public N remove(int index) {
-		// TODO Auto-generated method stub
 		int i=0;
 		size();
 		Node<N> tempCurrent=start;
@@ -145,7 +155,6 @@ public class MySinglyLinkedList<N> implements MyList<N> {
 
 	@Override
 	public N remove(Object object) {
-		// TODO Auto-generated method stub
 		size();
 		Node<N> temp=start;
 		for (int i = 0; i < size; i++) {
@@ -175,7 +184,6 @@ public class MySinglyLinkedList<N> implements MyList<N> {
 
 	@Override
 	public N get(int index) {
-		// TODO Auto-generated method stub
 		size();
 		if (index<0 || index>size) {
 			return null;
@@ -189,7 +197,6 @@ public class MySinglyLinkedList<N> implements MyList<N> {
 
 	@Override
 	public N set(int index, N element) {
-		// TODO Auto-generated method stub
 		size();
 		if (index<0 || index>size) {
 			return null;
@@ -205,7 +212,6 @@ public class MySinglyLinkedList<N> implements MyList<N> {
 
 	@Override
 	public int indexOf(Object object) {
-		// TODO Auto-generated method stub
 		size();
 		Node<N> temp=start;
 		for (int i = 0; i < size; i++) {

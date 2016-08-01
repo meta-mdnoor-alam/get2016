@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 /**
  * Program to search an element in an array by binary search.
- * 
  * @author Noor
  */
 public class BinarySearch {

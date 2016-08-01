@@ -1,8 +1,7 @@
 package Session1;
 
-/**
+/**Class to implement the concept of generic doubly-linkedlist by implementing the MyList interface.
  * @author Noor
- *
  */
 public class MyDoublyLinkedList<N> implements MyList<N> {
 
@@ -11,17 +10,32 @@ public class MyDoublyLinkedList<N> implements MyList<N> {
 
 	int size;
 	
+	/**
+	 * Default constructor.
+	 */
 	public MyDoublyLinkedList() {
 		start=null;
 		end=null;
 		size=0;
 	}
 	
+	/**
+	 * Generic Inner class to make a node of the doubly-linked list with previous and
+	 * next pointing references of the Node type.
+	 * @author Noor
+	 * @param <N> Generic type of the node data.
+	 */
 	private static class Node<N> {
 		Node<N> previous;
 		N data;
 		Node<N> next;
 		
+		/**
+		 * Node constructor to initialize the data and the pointer references nodes.
+		 * @param previous
+		 * @param data
+		 * @param next
+		 */
 		public Node(Node<N> previous, N data, Node<N> next) {
 			this.previous=previous;
 			this.data=data;
@@ -35,6 +49,11 @@ public class MyDoublyLinkedList<N> implements MyList<N> {
 		return 0;
 	}
 	
+	/**
+	 * Method to add element at the first location of the list.
+	 * @param element
+	 * @return success or not.
+	 */
 	public boolean addFirst(N element) {
 		Node<N> node = new Node<N>(null, element, start);
 		size();

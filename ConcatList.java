@@ -3,27 +3,42 @@ package Session1;
 import java.util.Scanner;
 
 /**
+ * Class to add the elements of first list to the second list
  * @author Noor
- *
  */
 public class ConcatList<N> {
 	
 	private MyArrayList<N> list;
 	
+	/**
+	 * Parameterised constructor
+	 * @param list
+	 */
 	public ConcatList(MyArrayList<N> list) {
 		this.list=list;
 	}
 	
+	/**
+	 * Method to concatinate second list over the original list.
+	 * @param secondList
+	 */
 	public void concatList(MyArrayList<N> secondList) {
 		list.addAll(secondList);
 	}
 	
+	/**
+	 * Method to display the list.
+	 */
 	public void display() {
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println(list.get(i));
 		}
 	}
 
+	/**
+	 * Main function
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		MyArrayList<String> firstList= new MyArrayList<String>();

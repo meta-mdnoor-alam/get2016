@@ -1,9 +1,8 @@
 package Session1;
 
 /**
- * To implement array-list using array.
+ * To implement array-list using array which implements interface MyList.
  * @author Noor
- *
  */
 public class MyArrayList<N> implements MyList<N>{
 
@@ -11,12 +10,19 @@ public class MyArrayList<N> implements MyList<N>{
 	private Object[] array; 
 	private int size=0;
 	
+	/**
+	 * Default constructor.
+	 */
 	public MyArrayList() {
 		super();
 		array=new Object[INITIAL_SIZE];
 		size=0;
 	}
 	
+	/**
+	 * Parameterized constructor.
+	 * @param userDefinedCapacity
+	 */
 	public MyArrayList(int userDefinedCapacity) {
 		super();
 		array=new Object[userDefinedCapacity];
@@ -35,6 +41,10 @@ public class MyArrayList<N> implements MyList<N>{
 		return size;
 	}
 	
+	/**
+	 * Method to check whether the array is having space to add elements or not.
+	 * @return
+	 */
 	private boolean isSpaceAvailable() {
 		if (array[array.length-1]==null) {
 			return true;
@@ -42,11 +52,16 @@ public class MyArrayList<N> implements MyList<N>{
 		return false;
 	}
 	
+	/**
+	 * Method to return the increasing factor of the array size.
+	 * @return
+	 */
 	private int increaseSize() {
 		size();
 		int newSize=((3*size)/2)+1;
 		return newSize;
 	}
+	
 	
 	@Override
 	public boolean add(N element) {
@@ -109,6 +124,10 @@ public class MyArrayList<N> implements MyList<N>{
 		}
 	}
 
+	/**
+	 * Method to check whether trying to fetch the array location which is out of bound.
+	 * @param index
+	 */
 	private void checkIndexOutOfBoundCheck(int index) {
 		if (index>=size()) {
 			throw new ArrayIndexOutOfBoundsException("Array out of bound\nSize : "+size()+"\nIndex : "+index);
@@ -124,9 +143,9 @@ public class MyArrayList<N> implements MyList<N>{
 	}
 	
 	@Override
-	public boolean contains(Object obj) {
+	public boolean contains(Object object) {
 		for (int i = 0; i < size(); i++) {
-			if (array[i].equals(obj)) {
+			if (array[i].equals(object)) {
 				return true;
 			}
 		}
@@ -184,10 +203,10 @@ public class MyArrayList<N> implements MyList<N>{
 	}
 	
 	@Override
-	public int indexOf(Object obj) {
+	public int indexOf(Object object) {
 		int size=size();
 		for (int i = 0; i < size; i++) {
-			if (array[i].equals(obj)) {
+			if (array[i].equals(object)) {
 				return i;
 			}
 		}
@@ -223,6 +242,11 @@ public class MyArrayList<N> implements MyList<N>{
 		mergeSort(0, size - 1);
 	}
 
+	/**
+	 * Method to apply merge sort from lower index to higher index recursively.
+	 * @param low
+	 * @param high
+	 */
 	private void mergeSort(int low, int high) {
 		if (low < high) {
 			int middle = low + (high - low) / 2;
@@ -232,6 +256,12 @@ public class MyArrayList<N> implements MyList<N>{
 		}
 	}
 
+	/**
+	 * Method to apply merge algorithm and sort the array by calling this function recursively.
+	 * @param low
+	 * @param middle
+	 * @param high
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private void merge(int low, int middle, int high) {
 		int size=size();

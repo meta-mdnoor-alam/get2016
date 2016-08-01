@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 /**
  * Program to find the thirt largest element in an array.
- * 
  * @author Noor
  */
 public class ThirdLargestNumber {
