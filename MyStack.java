@@ -117,6 +117,10 @@ public class MyStack {
 		return output;
 	}
 
+	/**
+	 * Program's main function.
+	 * @param ar
+	 */
 	public static void main(String[] ar) {
 		MyStack stack = new MyStack();
 		Scanner scan = new Scanner(System.in);

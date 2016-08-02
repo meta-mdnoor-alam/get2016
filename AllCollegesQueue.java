@@ -8,16 +8,23 @@ public class AllCollegesQueue {
 		// stores details of all colleges in order of their ranks
 		private static MyQueue<College> allColleges;
 
+		/**
+		 * Default constructor
+		 */
 		public AllCollegesQueue() {
 			allColleges = new MyQueue<College>();
 		}
 
+		/**
+		 * Method to get all the colleges queue.
+		 * @return All colleges queue.
+		 */
 		public static MyQueue<College> getAllColleges() {
 			return allColleges;
 		}
 
 		/**
-		 * Method to get all colleges by rank.
+		 * Method to get the college of specified rank.
 		 * @param rank
 		 * @return
 		 */
