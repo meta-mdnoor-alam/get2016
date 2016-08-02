@@ -4,39 +4,84 @@ import java.util.Scanner;
 
 import Session1.MySinglyLinkedList;
 
-/**
+/**Program to implement a Stack using a linked list.
  * @author Noor
- *
  */
 public class MyStack {
-	private MySinglyLinkedList<Character> stack; // this is stack which we have to maintain
-	private int top = -1; // this is condition that stack is empty
+	private MySinglyLinkedList<Character> stack;
+	private int top = -1;
 
-	//constructor
+	/**
+	 * Default constructor.
+	 */
 	public MyStack() {
 		stack = new MySinglyLinkedList<Character>();
 	}
 
-	// It push the element into the stack
+	/**
+	 * Method to push the element into the stack.
+	 * @param data
+	 */
 	public void push(char data) {
 		top++;
 		stack.add(data);
 	}
 	
-	// It pop the element into the stack
+	/**
+	 * Method to pop the element into the stack.
+	 * @return data which was on the top of the stack.
+	 */
 	public char pop() {
 		char data = stack.remove(top);
 		top--;
 		return data;
 	}
 
-	// It peek the element in stack top
+	/**
+	 * Method to peek the element at the stack top.
+	 * @return data at the top of the stack.
+	 */
 	public char peek() {
 		char data = stack.get(top);
 		return data;
 	}
 
-	// this function convert the infix expression to postfix expression
+	/**
+	 * Method to return the precedence of the operator.
+	 * @param data
+	 * @return
+	 */
+	private int precedence(char data) {
+		if (data == '^'){
+			return 3;
+		}
+		else if (data == '*' || data == '/') {
+			return 2;
+		} else if (data == '+' || data == '-') {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+	
+	/**
+	 * Method to check whether the data is operator or not.
+	 * @param data
+	 * @return success or not.
+	 */
+	public boolean isOperator(char data) {
+		if (data == '*' || data == '/' || data == '+' || data == '-'
+				|| data == '^' || data == '(' || data ==')') {
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * Method to convert infix expression to postfix expression.
+	 * @param expression
+	 * @return
+	 */
 	public String convertInfixToPostfix(String expression) {
 		String output="";
 		int length = expression.length();
@@ -72,34 +117,13 @@ public class MyStack {
 		return output;
 	}
 
-	private int precedence(char data) {
-		if (data == '^'){
-			return 3;
-		}
-		else if (data == '*' || data == '/') {
-			return 2;
-		} else if (data == '+' || data == '-') {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
-
-	public boolean isOperator(char data) {
-		if (data == '*' || data == '/' || data == '+' || data == '-'
-				|| data == '^' || data == '(' || data ==')') {
-			return true;
-		}
-		return false;
-	}
-
 	public static void main(String[] ar) {
 		MyStack stack = new MyStack();
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Enter The Expression");
+		System.out.print("Enter the infix notation  :\t");
 		String expression = scan.next();
-		String out = stack.convertInfixToPostfix(expression);
-		System.out.println(out);
+		String output = stack.convertInfixToPostfix(expression);
+		System.out.print("\n\nPostfix notation  :\t"+output);
 		scan.close();
 	}
 }
