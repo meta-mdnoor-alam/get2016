@@ -1,21 +1,21 @@
 package Session4;
 
 /**
- * Class to stor the 
+ * Class to store guest information.
  * @author Noor
  *
  */
 public class Guest {
 
 	private String guestName;
-	private String guestAge;
+	private int guestAge;
 	
 	/**
 	 * Parameterized constructor
 	 * @param guestName
 	 * @param guestAge
 	 */
-	public Guest(String guestName, String guestAge) {
+	public Guest(String guestName, int guestAge) {
 		this.setGuestName(guestName);
 		this.setGuestAge(guestAge);
 	}
@@ -40,7 +40,7 @@ public class Guest {
 	 * Method to get guest age.
 	 * @return the guestAge
 	 */
-	public String getGuestAge() {
+	public int getGuestAge() {
 		return guestAge;
 	}
 
@@ -48,7 +48,7 @@ public class Guest {
 	 * Method to set guest age.
 	 * @param guestAge the guestAge to set
 	 */
-	public void setGuestAge(String guestAge) {
+	public void setGuestAge(int guestAge) {
 		this.guestAge = guestAge;
 	}
 
