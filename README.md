@@ -21,7 +21,11 @@ Implement equals and hashCode of all the domain classes
 
 Note :
 1. Program flow is starting from SocialNetwork.java
+
 2. There are two types of node in social network, i.e. User Node and Organisation Node.
+
 3. There are two types of profiles, i.e., User Profile and Organisation Profile.
+
 4. To valid various field in our network Validations.java plays the role.
+
 5. FileReaderHandler and FileWriterHandler are used used to read connections and node and write connections and nodes respectively.
