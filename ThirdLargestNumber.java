@@ -19,7 +19,7 @@ public class ThirdLargestNumber {
 		do {
 			System.out.print("\n\nEnter the limit for the array size  :\t");
 			limit=scanner.nextInt();
-		} while (limit>=3);
+		} while (limit<3);
 		
 		return limit;
 	}
@@ -46,7 +46,7 @@ public class ThirdLargestNumber {
 	 */
 	public int findThirdLargestElement(int[] array) {
 
-		int thirdLargestElement = 0, secondLargestElement = 0, firstLargestElement = 0, loopIncrementer = 0;
+		int thirdLargestElement = array[0], secondLargestElement = array[1], firstLargestElement = array[2], loopIncrementer = 0;
 
 		while (loopIncrementer < array.length) {
 			if (array[loopIncrementer] > firstLargestElement) {
