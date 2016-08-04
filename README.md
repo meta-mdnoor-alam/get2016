@@ -10,3 +10,8 @@ Write a program to implement the Queue functionality using the java collections.
 
 ###Assignment 3:
 Write a program to insert a number in sorted LinkList. Use recursive approach.
+
+###Note:
+1. For Assignment-1 please open ConcordanceOfCharacters folder.
+2. For Assignment-2 please open QueueImplementor folder.
+3. For Assignment-3 please open SortedLinkedList folder.
