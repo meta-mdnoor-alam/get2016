@@ -14,4 +14,4 @@ Write a program to insert a number in sorted LinkList. Use recursive approach.
 ###Note:
 1. For **_Assignment-1_** please open **_ConcordanceOfCharacters_** folder.
 2. For **_Assignment-2_** please open **_QueueImplementor_** folder.
-3. For **_Assignment-3_** please open SortedLinkedList folder.
+3. For **_Assignment-3_** please open **__SortedLinkedList_** folder.
