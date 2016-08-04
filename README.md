@@ -13,3 +13,9 @@ By using Heap data structure techniques write a program to handle the jobs sent 
 Assignment 2: 
 Write a program to allot rooms in guest house. rooms can be identified by their room number and allotment is based age of Guest. (Use Hash Table techniques for allocation)
 	Given : There are N numbers of rooms and K is the count of guests, where N is a prime number and N > K
+	
+	
+# Note :
+1. Assignment1 flow of program starts from PrintJobHandler.java
+
+2. Assignment2 flow of program starts from GuestRoomAllotment.java 
