@@ -8,7 +8,6 @@ import java.util.Map;
 /**
  * Class to implement hash-map for storing the list of occurrence of characters of the input string indices with key values.
  * @author Noor
- *
  */
 public class MapImplementor {
 
@@ -28,27 +27,6 @@ public class MapImplementor {
 	 */
 	public Map<Character, List<Integer>> getConcordanceOfCharactersMap() {
 		return concordanceOfCharactersMap;
-	}
-
-	/**
-	 * @param concordanceOfCharactersMap the concordanceOfCharactersMap to set
-	 */
-	public void setConcordanceOfCharactersMap(Map<Character, List<Integer>> concordanceOfCharactersMap) {
-		this.concordanceOfCharactersMap = concordanceOfCharactersMap;
-	}
-
-	/**
-	 * @return the indicesOfCharacterOccurenceList
-	 */
-	public List<Integer> getIndicesOfCharacterOccurenceList() {
-		return indicesOfCharacterOccurenceList;
-	}
-
-	/**
-	 * @param indicesOfCharacterOccurenceList the indicesOfCharacterOccurenceList to set
-	 */
-	public void setIndicesOfCharacterOccurenceList(List<Integer> indicesOfCharacterOccurenceList) {
-		this.indicesOfCharacterOccurenceList = indicesOfCharacterOccurenceList;
 	}
 	
 	/**

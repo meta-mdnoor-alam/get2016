@@ -32,11 +32,11 @@ public class DisplayConcordance {
 		
 		for (Map.Entry<Character, List<Integer>> mapEntryVariable : map.entrySet()) {
 			indicesList = mapEntryVariable.getValue();
-			System.out.print(mapEntryVariable.getKey()+" = [");
+			System.out.print(mapEntryVariable.getKey()+"=[");
 			for (Integer index : indicesList) {
-				System.out.print(index+",");
+				System.out.print(index+" ");
 			}
-			System.out.print("],  ");
+			System.out.print("]    ");
 		}
 	}
 }
