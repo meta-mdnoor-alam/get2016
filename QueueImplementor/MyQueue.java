@@ -34,7 +34,7 @@ public class MyQueue {
 	 */
 	public int dequeue() {
 		if (queue.size() == 0) {
-			return -111111;
+			return Integer.MIN_VALUE;
 		} else {
 			return queue.remove(0);
 		}

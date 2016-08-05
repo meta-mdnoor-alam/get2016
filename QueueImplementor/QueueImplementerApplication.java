@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 /**
  * Program to implement queue.
- * 
  * @author Noor
  */
 public class QueueImplementerApplication {
@@ -43,7 +42,7 @@ public class QueueImplementerApplication {
 					break;
 				case DEQUEUE:
 					int deletedValue = queue.dequeue();
-					if (deletedValue == -111111) {
+					if (deletedValue == Integer.MIN_VALUE) {
 						System.out.println("Queue is Empty. Can't perform deletion.");
 					} else {
 						System.out.println(deletedValue + " removed ");

@@ -40,15 +40,20 @@ public class MapImplementor {
 			System.out.println("Empty String");
 			return;
 		} else {
-			for (int index = 0; index < inputStringLength; index++) {
+			for (int index = 0, indexWithoutWhiteSpace = 0; index < inputStringLength; index++) {
 				char character = inputString.charAt(index);
+				
+				if (character == ' ') {
+					continue;
+				}
+				
 				indicesOfCharacterOccurenceList = concordanceOfCharactersMap.get(character);
 				
 				if(indicesOfCharacterOccurenceList==null) {
 					indicesOfCharacterOccurenceList = new ArrayList<Integer>();
 				}
 				
-				indicesOfCharacterOccurenceList.add(index);
+				indicesOfCharacterOccurenceList.add(indexWithoutWhiteSpace++);
 				concordanceOfCharactersMap.put(character, indicesOfCharacterOccurenceList);
 			}
 		}
