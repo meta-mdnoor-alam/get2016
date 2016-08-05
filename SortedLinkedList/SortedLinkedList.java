@@ -1,94 +1,76 @@
 package Session5.SortedLinkedList;
 
+import java.util.LinkedList;
+
 /**
  * Class to implement sorted linked list.
  * @author Noor
  */
 public class SortedLinkedList {
 
-	private Node start;
-
+	private LinkedList<Integer> linkedList;
+	
 	/**
-	 * Class to construct a singly linked-list
-	 * @author Noor
+	 * Default constructor
 	 */
-	private class Node {
-		private int data;
-		private Node next;
-		public Node(int data, Node next) {
-			this.data = data;
-			this.next = next;
-		}
+	public SortedLinkedList() {
+		linkedList = new LinkedList<Integer>();
 	}
-
+	
 	/**
-	 * Method to perform insertion of data.
-	 * @param data
+	 * Method to insert the new element to the list
+	 * @param data - The data to be inserted into the list
+	 * @return True if the data is inserted to the linked list
 	 */
-	public void insert(int data) {
-		if (start == null) {
-			start = insert(data, start);
+	public boolean insert(int data) {
+		int currentIndex = 0;
+		if(linkedList.size() == 0) {
+			linkedList.add(data);
 		} else {
-			if (start.data > data) {
-				start = new Node(data, start);
-			} else {
-				start = insert(data, start);
-			}
+			insert(data, currentIndex);
 		}
+		return true;
 	}
-
+	
 	/**
-	 * Method to insert data at sorted position through recursion.
+	 * Method to find the correct position to insert the data element.
 	 * @param data
-	 * @param node
-	 * @return node 
+	 * @param currentIndex
+	 * @return
 	 */
-	private Node insert(int data, Node node) {
-		if (node == null) {
-			Node temp = new Node(data, null);
-			return temp;
-		} else {
-			if (node.data > data && node == start) {
-				if (node.next != null) {
-					node.next = new Node(data, node.next);
-					return node;
-				}
-			}
-			if (node.next != null) {
-				if (node.next.data > data) {
-					node.next = new Node(data, node.next);
-					return node;
-				}
-			}
-			node.next = insert(data, node.next);
-			return node;
+	private boolean insert(int data, int currentIndex) {
+		
+		if(currentIndex >= linkedList.size()) {
+			linkedList.addLast(data);
+			return true;
 		}
+
+		int valueAtCurrentIndex = linkedList.get(currentIndex);
+		
+		if(valueAtCurrentIndex > data) {
+			if(currentIndex == 0) {
+				linkedList.addFirst(data);
+				return true;
+			}
+			return false;
+		} else {
+			if(insert(data, currentIndex+1) == false) {
+				linkedList.add(currentIndex+1, data);
+			}
+		}
+		return true;
 	}
 
 	/**
 	 * Method to show the linked-list
 	 */
 	public void showLinkedList() {
-		if (start == null) {
+		int sizeOfLinkedList = linkedList.size();
+		if (sizeOfLinkedList == 0) {
 			System.out.println("\n\nEmpty Linked-List. Nothing to display.");
 		} else {
 			System.out.println("\n\nSorted Linked-List  :");
-			showLinkedList(start);
+			System.out.println(linkedList);
 		}
 	}
-	
-	/**
-	 * Method to show the linked-list from specified node.
-	 * @param node
-	 */
-	private void showLinkedList(Node node) {
-		if (node == null) {
-			return;
-		} else {
-			System.out.print(node.data + "  ");
-			showLinkedList(node.next);
-		}
-	}
-
-	
 }
