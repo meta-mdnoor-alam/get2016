@@ -12,14 +12,12 @@ import java.util.Map;
 public class MapImplementor {
 
 	private Map<Character, List<Integer>> concordanceOfCharactersMap;
-	private List<Integer> indicesOfCharacterOccurenceList;
 	
 	/**
 	 * Default constructor
 	 */
 	public MapImplementor() {
 		concordanceOfCharactersMap=new HashMap<Character, List<Integer>>();
-		indicesOfCharacterOccurenceList = new ArrayList<Integer>();
 	}
 
 	/** 
@@ -47,7 +45,7 @@ public class MapImplementor {
 					continue;
 				}
 				
-				indicesOfCharacterOccurenceList = concordanceOfCharactersMap.get(character);
+				List<Integer> indicesOfCharacterOccurenceList = concordanceOfCharactersMap.get(character);
 				
 				if(indicesOfCharacterOccurenceList==null) {
 					indicesOfCharacterOccurenceList = new ArrayList<Integer>();
