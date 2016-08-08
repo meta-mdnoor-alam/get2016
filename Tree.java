@@ -8,9 +8,8 @@ import java.util.Scanner;
  */
 public class Tree {
 
-	private Node root;
+	private static Node root;
 	Scanner scanner = new Scanner(System.in);
-	static int size=0;
 	
 	/**
 	 * Generic Inner class to make a tree node list with left pointing
@@ -30,14 +29,12 @@ public class Tree {
 		}
 	}
 	
-	public Tree() {
+	/*public Tree() {
 		root=new Node(null, -1, null);
-		size=0;
-	}
+	}*/
 	
 	public Tree(int data) {
 		root=new Node(null, data, null);
-		size=0;
 	}
 	
 	/*public Tree(int data) {
@@ -45,7 +42,7 @@ public class Tree {
 	}*/
 	
 	public boolean isEmpty() {
-		return (root.data==-1 ? true : false);
+		return (root==null ? true : false);
 	}
 	
 	/*public Node createNode() 
@@ -110,7 +107,11 @@ public class Tree {
 			return;
 		}
 		Node result=search(root, prevData);
-		System.out.println("Node result  "+result.data);
+		if (result == null) {
+			System.out.println("Node result null");
+		} else {
+			System.out.println("Node result  "+result.data);
+		}
 		Node node=new Node(null, content, null);
 		if (result!=null && result.data==prevData) {
 			if (pos=='l' && result.left==null) {
@@ -122,8 +123,27 @@ public class Tree {
 	}
 	
 	public Node search(Node node, int searchTerm) {
+		if (node == null) {
+			return null;
+		} else {
+			if (node.data==searchTerm) {
+				return node;
+			}
+			if (node.right!=null) {
+				return search(node.right, searchTerm);
+			}
+			if (node.left!=null) {
+				return search(node.left, searchTerm);
+			}
+			return null;
+		}
 		
-		if (node==null) {
+		
+		
+		
+		
+		
+		/*if (node==null) {
 			return null;
 		}
 		else{
@@ -140,12 +160,12 @@ public class Tree {
 			
 			
 			return node!=null ? node : null;
-			/*if(node.left!=null) {
+			if(node.left!=null) {
 				return (search(node.left, searchTerm));
 			} if(node.right!=null) {
 				return search(node.right, searchTerm);
-			}*/
-		}
+			}
+		}*/
 
 		/*if (node.data==searchTerm) {
 			System.out.println("Inside search searchTerm  "+node.data);
@@ -202,30 +222,48 @@ public class Tree {
                     break;
                 case 2:
                 	
-                	System.out.println("create node -1,'n',10");
-                	createNode(-1,'n',10);
+                	/*System.out.println("create node -1,'n',10");
+                	createNode(-1,'n',10);*/
+                	int delay;
                     
-                    System.out.println("create node 10,'l',20");
+                    System.out.println("create node 10,'l',30");
                     createNode(10,'l',30);
-                    
-                    System.out.println("create node 20,'l',6");
-                    createNode(30,'l',7);
-                    createNode(7,'r',9);
-                    
-                    createNode(30,'r',2);
-                    
                     print();
-                    System.out.println("create node 10,'r',30");
+                    //delay = scanner.nextInt();
+                    
+                    System.out.println("create node 30,'l',7");
+                    createNode(30,'l',7);
+                    print();
+                    //delay = scanner.nextInt();
+                    
+                    System.out.println("create node 7,'r',9");
+                    createNode(7,'r',9);
+                    print();
+                   // delay = scanner.nextInt();
+                    
+                    System.out.println("create node 30,'r',2");
+                    createNode(30,'r',2);
+                    print();
+                   // delay = scanner.nextInt();
+                    
+                    System.out.println("create node 10,'r',20");
                     createNode(10,'r',20);
                     print();
+                    //delay = scanner.nextInt();
                    
-                    System.out.println("create node 30,'l',2");
+                    System.out.println("create node 20,'l',8");
                     createNode(20,'l',8);
                     print();
+                   // delay = scanner.nextInt();
                     
+                    System.out.println("create node 20,'r',6");
                     createNode(20,'r',6);
-                   
                     print();
+                    
+                    System.out.println("create node 7,'r',12");
+                    createNode(7,'r',12);
+                    print();
+                    //delay = scanner.nextInt();
                     
                     
                     break;
@@ -244,6 +282,6 @@ public class Tree {
     
     public static void main(String[] args)
     { 
-        new Tree().displaymenu();
+        new Tree(10).displaymenu();
     }
 }
