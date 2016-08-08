@@ -107,15 +107,10 @@ public class Tree {
 	public void createNode(int prevData, char pos, int content) {
 		if (pos=='n') {
 			root= new Node(null, content, null);
-			System.out.println("yaha andar");
 			return;
 		}
 		Node result=search(root, prevData);
-		if (result==null) {
-			System.out.println(root.data+"  aa gya null");
-		}
-		System.out.println("Previousdata "+result.data);
-		System.out.println(root.data);
+		System.out.println("Node result  "+result.data);
 		Node node=new Node(null, content, null);
 		if (result!=null && result.data==prevData) {
 			if (pos=='l' && result.left==null) {
@@ -126,22 +121,46 @@ public class Tree {
 		}
 	}
 	
-	public Node search(Node node, int value) {
-		if (node!=null) {
-			if (node.data==value) {
-				return node;
-			}  if(node.left!=null) {
-				return (search(node.left, value));
-			} if(node.right!=null) {
-				return search(node.right, value);
-			}
-			System.out.println("Galat output");
-			return node;
-		}
-		else{
-			System.out.println("node is null:"+value);
+	public Node search(Node node, int searchTerm) {
+		
+		if (node==null) {
 			return null;
 		}
+		else{
+			System.out.println("Inside search searchTerm  "+node.data);
+			if (node.data==searchTerm) {
+				return node;
+			}
+			if (node.right!=null) {
+				return search(node.right, searchTerm);
+			}
+			if (node.left!=null) {
+				return search(node.left, searchTerm);
+			}
+			
+			
+			return node!=null ? node : null;
+			/*if(node.left!=null) {
+				return (search(node.left, searchTerm));
+			} if(node.right!=null) {
+				return search(node.right, searchTerm);
+			}*/
+		}
+
+		/*if (node.data==searchTerm) {
+			System.out.println("Inside search searchTerm  "+node.data);
+			return node;
+		}
+		if (node.left!=null) {
+			System.out.println("Inside left search searchTerm  "+node.data);
+			 node=node.left;
+		}
+		if (node.right!=null) {
+			System.out.println("Inside ryt search searchTerm  "+node.data);
+			 node=node.right;
+		}
+		return search(node, searchTerm);*/
+		
 	}
 	
 	
@@ -182,13 +201,33 @@ public class Tree {
                 case 1:
                     break;
                 case 2:
+                	
+                	System.out.println("create node -1,'n',10");
                 	createNode(-1,'n',10);
-                    createNode(10,'l',20);
-                    createNode(20,'l',6);
-                    createNode(10,'r',30);
-                    createNode(30,'l',2);
-                    createNode(30,'r',7);
-                    createNode(7,'l',9);
+                    
+                    System.out.println("create node 10,'l',20");
+                    createNode(10,'l',30);
+                    
+                    System.out.println("create node 20,'l',6");
+                    createNode(30,'l',7);
+                    createNode(7,'r',9);
+                    
+                    createNode(30,'r',2);
+                    
+                    print();
+                    System.out.println("create node 10,'r',30");
+                    createNode(10,'r',20);
+                    print();
+                   
+                    System.out.println("create node 30,'l',2");
+                    createNode(20,'l',8);
+                    print();
+                    
+                    createNode(20,'r',6);
+                   
+                    print();
+                    
+                    
                     break;
                 case 3:
                     //searchnode();
