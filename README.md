@@ -17,7 +17,6 @@ Table | Column | Default Value
 ------------ | ------------- | -------------
 Book_Issue | Issue_date | Current date
 Book_Issue | Due_date | Current date + 15 days
-
 4. Write a command to remove Members table of the LIS database.
 5. Create the members table again.
 
