@@ -13,25 +13,13 @@ Write SQL scripts for the following:
 2. Write a command to display all the table names present in LIS.
 3. Alter definitions of following LIS tables to provide the default constraints:
 
-First Header | Second Header
------------- | -------------
-Content from cell 1 | Content from cell 2
-Content in the first column | Content in the second column
+Table | Column | Default Value
+------------ | ------------- | -------------
+Book_Issue | Issue_date | Current date
+Book_Issue | Due_date | Current date + 15 days
 
-
-
-Table
-Column
-Default value
-Book_Issue
-Issue_dt
-Current date
-Book_Issue
-Due_dt
-Current date + 15 days
-
-Write a command to remove Members table of the LIS database.
-Create the members table again.
+4. Write a command to remove Members table of the LIS database.
+5. Create the members table again.
 
 
 
