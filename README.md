@@ -13,19 +13,10 @@ Write SQL scripts for the following:
 2. Write a command to display all the table names present in LIS.
 3. Alter definitions of following LIS tables to provide the default constraints:
 
-**-------------------------------------------------------------------**
-
-**|Table          |       Column        |   Default value           |**
-
-**|------------------------------------------------------------------|**
-
-|Book_Issue     |       Issue_dt      |   Current date            |
-
-|---------------------------------------------------------------
-
-|Book_Issue     |        Due_dt       |   Current date + 15 days  |
-
--------------------------------------------------------------------
+First Header | Second Header
+------------ | -------------
+Content from cell 1 | Content from cell 2
+Content in the first column | Content in the second column
 
 
 
