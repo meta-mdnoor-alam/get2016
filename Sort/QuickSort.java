@@ -5,6 +5,10 @@ package Session8.Sort;
  * @author Noor
  */
 public class QuickSort {
+
+	public int[] performQuickSort(int[] inputArray) {
+		return quickSort(inputArray, 0, inputArray.length-1);
+	}
 	
 	/**
 	 * Function to perform quick sort from array index lowerIndex upto higherIndex.
@@ -13,7 +17,7 @@ public class QuickSort {
 	 * @param higherIndex
 	 * @return 
 	 */
-	public int[] quickSort(int[] inputArray, int lowerIndex, int higherIndex) {
+	private int[] quickSort(int[] inputArray, int lowerIndex, int higherIndex) {
 		if (inputArray.length == 0) {
 			System.out.println("Please enter the array first.");
 		}
@@ -35,7 +39,7 @@ public class QuickSort {
 	 * @param higherIndex
 	 * @return
 	 */
-	public int partition(int[] inputArray, int lowerIndex, int higherIndex) {
+	private int partition(int[] inputArray, int lowerIndex, int higherIndex) {
 		int pivotElement = inputArray[higherIndex];
 		int i = lowerIndex - 1;
 		for (int j = lowerIndex; j < higherIndex; j++) {
@@ -55,7 +59,7 @@ public class QuickSort {
 	 * @param firstIndex
 	 * @param secondIndex
 	 */
-	public int[] swapArrayElements(int[] inputArray, int firstIndex, int secondIndex) {
+	private int[] swapArrayElements(int[] inputArray, int firstIndex, int secondIndex) {
 		int temp = inputArray[firstIndex];
 		inputArray[firstIndex] = inputArray[secondIndex];
 		inputArray[secondIndex] = temp;
