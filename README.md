@@ -4,7 +4,7 @@
 
 Write a program to print disorderly provided role numbers of n students in ascending series using tree sort.
 
-Assignment 2 : (Sort)
+###Assignment 2 : (Sort)
 
 Write a sorting system, which takes input from user and provide a sorted list. Here User could choose if he want to go with Comparison Sorting Or Linear Sorting.
 
