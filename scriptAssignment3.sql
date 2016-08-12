@@ -1,5 +1,6 @@
 /* Creating database */
-CREATE DATABASE IF NOT EXISTS eCommerce;
+DROP DATABASE IF EXISTS eCommerce; 
+CREATE DATABASE eCommerce;
 
 /* Selecting database */
 USE eCommerce;
@@ -59,24 +60,20 @@ INSERT INTO categories VALUES ('CAT-1003-03-001-02', 'Front Load', 'CAT-1003-03-
 INSERT INTO categories VALUES ('CAT-1003-03-002', 'Semi Automatic', 'CAT-1003-03');
 
 /* To display all the categories along with their parent category */
-SELECT c.category_id AS 'ID', c.category_name AS 'Category Name',
-    p.category_name AS 'Parent Category' FROM categories c 
-    LEFT JOIN categories p ON c.parent_category = p.category_id;
+SELECT a.category_id AS Category_ID, a.category_name AS Category_Name, b.category_name AS Parent_Category FROM categories a
+    LEFT JOIN categories b ON a.parent_category = b.category_id;
 
 /* To display all the categories along with their parent category,
  * sorted on the basis of parent category */
-SELECT c.category_id AS 'ID', c.category_name AS 'Category Name',
-    p.category_name AS 'Parent Category' FROM categories c 
-    LEFT JOIN categories p ON c.parent_category = p.category_id ORDER BY p.category_name;
+SELECT a.category_id AS Category_ID, a.category_name AS Category_Name, b.category_name AS Parent_Category FROM categories a
+    LEFT JOIN categories b ON a.parent_category = b.category_id ORDER BY b.category_name;
+    
 
 /* To display all the categories along with their parent category.
  * If it is top category then display  'Top Category' for parent category */
- SELECT c.category_id AS 'ID', c.category_name AS 'Category Name',
-    IFNULL (p.category_name, 'Top Category') AS 'Parent Category'
-    FROM categories c LEFT JOIN categories p ON c.parent_category = p.category_id;
+ SELECT a.category_id AS Category_ID, a.category_name AS Category_Name, IFNULL(b.category_name, 'Top_Category') AS Parent_Category FROM categories a
+    LEFT JOIN categories b ON a.parent_category = b.category_id ORDER BY b.category_name;
 
 /* To display only the top categories. */
-SELECT c.category_id AS 'ID', c.category_name AS 'Category Name',
-    IFNULL (p.category_name, 'Top Category') AS 'Parent Category'
-    FROM categories c LEFT JOIN categories p ON c.parent_category = p.category_id
-    WHERE c.parent_category IS NULL;
+ SELECT a.category_id AS Category_ID, a.category_name AS Category_Name, IFNULL(b.category_name, 'Top_Category') AS Parent_Category FROM categories a
+    LEFT JOIN categories b ON a.parent_category = b.category_id WHERE b.category_name IS NULL;
