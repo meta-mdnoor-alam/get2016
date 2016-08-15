@@ -1,1 +1,3 @@
-## This is Master branch. Please choose your required branch.
+## DBMS-Session4
+
+Please read the questions from above the script commands.
