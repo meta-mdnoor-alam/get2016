@@ -6,16 +6,14 @@ import Session5.QueueImplementor.MyQueue;
  * Class to perform radix sorting.
  * @author Noor
  */
-public class RadixSort {
+public class RadixSort implements Sort {
 
-	private int[] array;
-	private final int INITIAL_ARRAY_SIZE = 10;
-
-	/**
-	 * Method to perform the radix sort
-	 */
-	public int[] performRadixSort(int[] inputArray) {
-		this.array = inputArray;
+	private int[] inputArray;
+	
+	@Override
+	public int[] sort(int[] inputArray) {
+		this.inputArray = inputArray;
+		final int INITIAL_ARRAY_SIZE = 10;
 		MyQueue[] arrayOfKey = new MyQueue[INITIAL_ARRAY_SIZE];
 		for (int index = 0; index < arrayOfKey.length; index++) {
 			arrayOfKey[index] = new MyQueue();
@@ -25,7 +23,7 @@ public class RadixSort {
 		while (performSortOnNumberPlaceDigit(arrayOfKey, numberPlace) == true) {
 			numberPlace++;
 		}
-		return array;
+		return this.inputArray;
 	}
 
 	/**
@@ -38,8 +36,8 @@ public class RadixSort {
 		int number;
 		boolean result = false;
 		
-		for (int index = 0; index < array.length; index++) {
-			number = array[index];
+		for (int index = 0; index < inputArray.length; index++) {
+			number = inputArray[index];
 			for (int j = 0; j < numberPlace - 1; j++) {
 				number /= 10;
 			}
@@ -47,12 +45,12 @@ public class RadixSort {
 			if (digit != 0) {
 				result = true;
 			}
-			arrayOfQueue[digit].enqueue(array[index]);
+			arrayOfQueue[digit].enqueue(inputArray[index]);
 		}
 
 		for (int index = 0, arrayIndex = 0; index < arrayOfQueue.length; index++) {
 			while (arrayOfQueue[index].size() > 0) {
-				array[arrayIndex++] = arrayOfQueue[index].dequeue();
+				inputArray[arrayIndex++] = arrayOfQueue[index].dequeue();
 			}
 		}
 		return result;
@@ -63,7 +61,7 @@ public class RadixSort {
 	 * @return
 	 */
 	public int[] getSortedArray() {
-		return array;
+		return inputArray;
 	}
 
 }

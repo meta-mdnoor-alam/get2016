@@ -12,8 +12,7 @@ import Session8.Sort.EnumConstants.SortingType;
 public class SortingApplication {
 	
 	Scanner scanner;
-	private int[] inputArray;
-	private int[] outputSortedArray;
+	Sort arraySort;
 
 	public static void main(String[] args) {
 		new SortingApplication().mainMenuDisplay();
@@ -21,32 +20,33 @@ public class SortingApplication {
 	
 	private void mainMenuDisplay() {
 		scanner = new Scanner(System.in);
+		int[] outputSortedArray = null;
+		
 		try {
-			while (true) {
-				takeArrayInput();
+			char sortAgain;
+			do {
+				int[] inputArray=takeArrayInput();
 				int totalArraySize = inputArray.length;
-				System.out.println("\n\n1. Comparison sorting");
+				System.out.println("\n\nPlease choose which sorting methodology to be followed :");
+				System.out.println("1. Comparison sorting");
 				System.out.println("2. Linear Sorting");
-				System.out.print("Please enter your choice(1-2)  :\t");
-				SortingType mainChoice = SortingType.values()[scanner.nextInt()];
+				System.out.print("Enter your choice(1-2)  :\t");
+				SortingType sortingType = SortingType.values()[scanner.nextInt()];
 				
-				switch (mainChoice) {
+				switch (sortingType) {
 				case COMPARISON_SORT:
 					if (totalArraySize >= 10) {
-						sortBy(SortingMethodology.QUICK_SORT);
+						outputSortedArray = sortBy(inputArray, SortingMethodology.QUICK_SORT);
 					} else {
-						sortBy(SortingMethodology.BUBBLE_SORT);
+						outputSortedArray = sortBy(inputArray, SortingMethodology.BUBBLE_SORT);
 					}
 					break;
 				case LINEAR_SORT:
 					if (isRadixToBeUsed(inputArray) == true) {
-						sortBy(SortingMethodology.RADIX_SORT);
+						outputSortedArray = sortBy(inputArray, SortingMethodology.RADIX_SORT);
 					} else {
-						sortBy(SortingMethodology.COUNTING_SORT);
+						outputSortedArray = sortBy(inputArray, SortingMethodology.COUNTING_SORT);
 					}
-					break;
-				case EXIT:
-					System.exit(-1);
 					break;
 				default:
 					System.out.println("\n\nPlease choose valid option...");
@@ -55,57 +55,71 @@ public class SortingApplication {
 				
 				System.out.println("\n\nOutput sorted array  :");
 				displayArray(outputSortedArray);
-			}
+				
+				System.out.print("\n\nDo you want to sort another array (y/n)  :\t");
+				sortAgain = scanner.next().charAt(0);
+				if (sortAgain != 'y' && sortAgain != 'Y') {
+					System.out.print("\n\n\nThank you very much...");
+				}
+			} while(sortAgain == 'y' || sortAgain == 'Y');
 		} catch (Exception exception) {
 			System.out.println("Something went wrong " + exception.getLocalizedMessage());
 			mainMenuDisplay();
-		} finally {
-			if (scanner != null) {
-				scanner.close();
-			}
 		}
 	}
 	
 	/**
 	 * Method to get array input.
 	 */
-	private void takeArrayInput() {
-		System.out.println("\n\nPlease enter the total number of elements in the array  :\t");
-		int totalElements = scanner.nextInt();
-		inputArray = new int[totalElements];
-		outputSortedArray = new int[totalElements];
-		System.out.println("\nPlease enter the elements of array :");
-		for (int index = 0; index < totalElements; index++) {
-			inputArray[index] = scanner.nextInt();
+	private int[] takeArrayInput() {
+		int[] inputArray;
+		try {
+			System.out.println("\n\nPlease enter the size of the array  :\t");
+			int totalElements = scanner.nextInt();
+			inputArray = new int[totalElements];
+			System.out.println("\nPlease enter the elements  :");
+			for (int index = 0; index < totalElements; index++) {
+				inputArray[index] = scanner.nextInt();
+			}
+			
+			System.out.println("\nArray input successful !");
+		} catch (Exception e) {
+			System.out.println("Something went wrong " + e.getLocalizedMessage());
+			inputArray = takeArrayInput();
 		}
+		return inputArray;
 	}
 	
 	/**
 	 * Method to choose which sorting methodology to choose based on array behaviour.
 	 * @param choice
 	 */
-	private void sortBy(SortingMethodology choice) {
+	private int[] sortBy(int[] inputArray, SortingMethodology choice) {
+		int[] outputSortedArray = null;
+		
 		switch(choice) {
 		case QUICK_SORT:
-			QuickSort quickSort = new QuickSort();
-			outputSortedArray = quickSort.performQuickSort(inputArray);
+			arraySort = new QuickSort();
+			outputSortedArray = arraySort.sort(inputArray);
 			break;
 		case BUBBLE_SORT:
-			BubbleSort bubbleSort = new BubbleSort();
-			outputSortedArray = bubbleSort.performBubbleSort(inputArray);
+			arraySort = new BubbleSort();
+			outputSortedArray = arraySort.sort(inputArray);
 			break;
 		case RADIX_SORT:
-			RadixSort radixSort = new RadixSort();
-			outputSortedArray = radixSort.performRadixSort(inputArray);
+			arraySort = new RadixSort();
+			outputSortedArray = arraySort.sort(inputArray);
 			break;
 		case COUNTING_SORT:
-			CountingSort countingSort = new CountingSort();
-			outputSortedArray = countingSort.performCountSort(inputArray);
+			arraySort = new CountingSort();
+			outputSortedArray = arraySort.sort(inputArray);
 			break;
 		default:
-			System.out.println("\n\nPlease choose valid option...");
+			System.out.println("\n\nSomthing went wrong. Please try again...");
 			break;
 		}
+		
+		return outputSortedArray;
 	}
 
 	/**

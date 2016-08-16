@@ -3,14 +3,10 @@ package Session8.Sort;
 /** Class to perform count sort over array elements.
  * @author Noor
  */
-public class CountingSort {
+public class CountingSort implements Sort {
 
-	/**
-	 * Method to perform sorting over the array using count sort.
-	 * @param inputArray
-	 * @return
-	 */
-	public int[] performCountSort(int[] inputArray) {
+	@Override
+	public int[] sort(int[] inputArray) {
 		int inputArrayLength = inputArray.length;
 		int outputArray[] = new int[inputArrayLength];
 

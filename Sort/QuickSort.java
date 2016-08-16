@@ -4,9 +4,10 @@ package Session8.Sort;
  * Assumption : last element is considered as Pivot element in the array.
  * @author Noor
  */
-public class QuickSort {
+public class QuickSort implements Sort {
 
-	public int[] performQuickSort(int[] inputArray) {
+	@Override
+	public int[] sort(int[] inputArray) {
 		return quickSort(inputArray, 0, inputArray.length-1);
 	}
 	

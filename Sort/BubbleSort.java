@@ -4,14 +4,10 @@ package Session8.Sort;
  * Class to implement Bubble-Sorting.
  * @author Noor
  */
-public class BubbleSort {
+public class BubbleSort implements Sort {
 
-	/**
-	 * Method for bubble-sorting
-	 * @param inputArray
-	 * @return
-	 */
-	public int[] performBubbleSort(int[] inputArray) {
+	@Override
+	public int[] sort(int[] inputArray) {
 		int indexOfLastUnsortedElement = inputArray.length - 1;
 		for (int index1 = 0; index1 < indexOfLastUnsortedElement - 1; index1++) {
 			for (int index2 = 0; index2 < indexOfLastUnsortedElement - index1; index2++) {
