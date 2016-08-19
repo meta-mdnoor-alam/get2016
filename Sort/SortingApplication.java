@@ -36,15 +36,19 @@ public class SortingApplication {
 				switch (sortingType) {
 				case COMPARISON_SORT:
 					if (totalArraySize >= 10) {
+						System.out.println("Quick Sort called");
 						outputSortedArray = sortBy(inputArray, SortingMethodology.QUICK_SORT);
 					} else {
+						System.out.println("Bubble Sort called");
 						outputSortedArray = sortBy(inputArray, SortingMethodology.BUBBLE_SORT);
 					}
 					break;
 				case LINEAR_SORT:
 					if (isRadixToBeUsed(inputArray) == true) {
+						System.out.println("radix Sort called");
 						outputSortedArray = sortBy(inputArray, SortingMethodology.RADIX_SORT);
 					} else {
+						System.out.println("counting Sort called");
 						outputSortedArray = sortBy(inputArray, SortingMethodology.COUNTING_SORT);
 					}
 					break;

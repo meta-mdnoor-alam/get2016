@@ -10,13 +10,33 @@ public class EnumConstants {
 	 * @author Noor
 	 */
 	public enum SortingType {
-		DEFAULT, COMPARISON_SORT, LINEAR_SORT, EXIT
+		COMPARISON_SORT(1), LINEAR_SORT(2);
+		
+		private int sortingType;
+		
+		private SortingType(int sortingType) {
+			this.sortingType = sortingType;
+		}
+		
+		public int getSortingType() {
+			return sortingType;
+		}
 	}
 	
 	/**
 	 * Enum for sorting methodology.
 	 */
 	public enum SortingMethodology {
-		DEFAULT, QUICK_SORT, BUBBLE_SORT, RADIX_SORT, COUNTING_SORT
+		QUICK_SORT(1), BUBBLE_SORT(2), RADIX_SORT(3), COUNTING_SORT(4);
+
+		private int sortingMethodology;
+
+		private SortingMethodology(int sortingMethodology) {
+			this.sortingMethodology = sortingMethodology;
+		}
+
+		public int getSortingMethodology() {
+			return sortingMethodology;
+		}
 	}
 }
