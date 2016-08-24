@@ -1,5 +1,9 @@
 package Session1;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  * Helper class to fire the queries to the database
  * @author Noor
@@ -11,27 +15,22 @@ public class HelperClassBookIssueByMember {
 	 * @param query
 	 * @return True if book can be issued else false
 	 */
-	public static boolean executeCheckQuery(String query) {
-		boolean result = true;
+	public static boolean canBookBeIssued(String query) {
+		boolean bookAvailable = true;
 		try {
-			//Creating a statement object
-			Statement stmt = ConnectDatabase.getConnection().createStatement();
-			//Storing the result of the query
-			ResultSet rs = stmt.executeQuery(query);
+			Statement statement = DatabaseConnection.getConnection().createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
 
-			//Iterating over the result set
-			while(rs.next()) {
-				//Checking if the issued book has been returned or not
-				if(rs.getString("return_dt").equalsIgnoreCase("null")) {
-					result = false;
+			while(resultSet.next()) {
+				if(resultSet.getString("return_date").equalsIgnoreCase("null")) {
+					bookAvailable = false;
 				}
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		return result;
+		return bookAvailable;
 	}
 
 	/**
@@ -42,16 +41,13 @@ public class HelperClassBookIssueByMember {
 	public static boolean executeIssueBookQuery(String query) {
 		boolean result = false;
 		try {
-			//Creating a statement object
-			Statement stmt = ConnectDatabase.getConnection().createStatement();
-			//Storing the result of the query
-			int rs = stmt.executeUpdate(query);
+			Statement statement = DatabaseConnection.getConnection().createStatement();
+			int rowAffected = statement.executeUpdate(query);
 
-			if(rs > 0) {
+			if(rowAffected > 0) {
 				result = true;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -63,34 +59,22 @@ public class HelperClassBookIssueByMember {
 	 * @param query - The select query to be executed
 	 * @return The list of Books object containing the result set of the query
 	 */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static List executeGetAccessionIdQuery(String query) {
-		List<Books> result = new LinkedList();
-
+	public static Books getAccessionId(String query) {
+		Books book = null;
+		
 		try {
-			//Creating a statement object
-			Statement stmt = ConnectDatabase.getConnection().createStatement();
-			//Storing the result of the query
-			ResultSet rs = stmt.executeQuery(query);
+			Statement statement = DatabaseConnection.getConnection().createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
 
-			//Iterating over the result set
-			while(rs.next()) {
-				//Adding the row of the result as POJO
-				Books book = new Books();
-				book.setAccessionNumber(rs.getInt(1));
-				book.setTitleId(rs.getInt(2));
-				book.setPurchaseDate(rs.getString(3));
-				book.setPrice(rs.getFloat(4));
-				book.setStatus(rs.getString(5));
-
-				//Adding the object to the result set
-				result.add(book);
-			}
+			book = new Books();
+			book.setAccessionNumber(resultSet.getInt(1));
+			book.setTitleId(resultSet.getString(2));
+			book.setPurchaseDate(resultSet.getString(3));
+			book.setPrice(resultSet.getFloat(4));
+			book.setStatus(resultSet.getString(5));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
-		return result;
+		return book;
 	}
-
 }

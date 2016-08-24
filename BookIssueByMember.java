@@ -1,5 +1,9 @@
 package Session1;
 
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Scanner;
 
 /**
@@ -13,7 +17,7 @@ public class BookIssueByMember {
 	 * Method to get the input from user for book name
 	 * @return book name
 	 */
-	public String getBookName() {
+	private String getBookName() {
 		scanner = new Scanner(System.in);
 		String bookName = "";
 		System.out.print("Enter book name  :\t");
@@ -31,7 +35,7 @@ public class BookIssueByMember {
 	 * Method to get the input from user for the member id
 	 * @return member id
 	 */
-	public String getMemberId() {
+	private String getMemberId() {
 		scanner = new Scanner(System.in);
 		String memberId = "";
 		System.out.print("Enter Member Id  :\t");
@@ -46,72 +50,53 @@ public class BookIssueByMember {
 
 	/**
 	 * Method to check if the book can be issued or not
-	 * If can be issued then add a record for the same
+	 * if can be issued then add a record for the same
 	 * @param bookName - The book name
 	 * @param memberId - The member id
 	 */
-	@SuppressWarnings("unchecked")
-	public void issueBook(String bookName, String memberId) {
-		//Creating query to fetch book id from the book name
-		String query = "SELECT * FROM books b "
+	private void issueBook(String bookName, String memberId) {
+		String queryToGetAccessionNoByName = "SELECT * FROM books b "
 				+ "INNER JOIN titles t ON b.title_id = t.title_id "
-				+ "WHERE t.title_name = '"+bookName+"'";
-		int accessionNumber = 0;
-		boolean bookIssued;
+				+ "WHERE t.title_name = '" + bookName + "'";
 
-		//Getting the result of the query
-		List<Books> result = HelperClassBookIssueByMember.executeGetAccessionIdQuery(query);
-		//Iterating over the list to get the book id
-		for (Books b : result) {
-			accessionNumber = b.getAccessionNumber();
-		}
-
-		//Creating query to check if the book can be issued or not
-		query = "SELECT bi.issue_dt, bi.accession_number, bi.member_id, br.return_dt FROM book_issue bi "
+		int accessionNumber = HelperClassBookIssueByMember.getAccessionId(queryToGetAccessionNoByName).getAccessionNumber();
+		
+		String queryForBookDetails = "SELECT bi.issue_date, bi.accession_number, bi.member_id, br.return_date FROM book_issue bi "
 				+ "LEFT JOIN book_return br ON bi.accession_number = br.accession_number AND "
-				+ "bi.member_id = br.member_id AND bi.issue_dt = br.issue_dt "
-				+ "WHERE bi.accession_number = "+accessionNumber;
-		//Getting the result of the query
-		bookIssued = HelperClassBookIssueByMember.executeCheckQuery(query);
+				+ "bi.member_id = br.member_id AND bi.issue_date = br.issue_date "
+				+ "WHERE bi.accession_number = " + accessionNumber;
+		
+		boolean isBookAvailableForIssue = HelperClassBookIssueByMember.canBookBeIssued(queryForBookDetails);
 
-		//Checking if the book is available for issuing
-		if(bookIssued) {
-			//Getting the system date
+		if(isBookAvailableForIssue) {
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-			Calendar cal = Calendar.getInstance();
-			//Saving the current date
-			String issueDate = dateFormat.format(cal.getTime());
-			//Adding 15 days to current date for due date
-			cal.add(Calendar.DATE, 15);
-			//Saving the due date
-			String dueDate = dateFormat.format(cal.getTime());
+			Calendar calender = Calendar.getInstance();
+			
+			String issueDate = dateFormat.format(calender.getTime());
+			calender.add(Calendar.DATE, 15);
+			String dueDate = dateFormat.format(calender.getTime());
 
-			//Creating query to insert the record for issuing the book
-			query = "INSERT INTO book_issue VALUES "
+			String queryToInsertInBookIssue = "INSERT INTO book_issue VALUES "
 					+ "('"+issueDate+"', "+accessionNumber+", '"+memberId+"', '"+dueDate+"')";
-			//Getting the result of the query
-			HelperClassBookIssueByMember.executeIssueBookQuery(query);
-			System.out.println("The book has been issued");
+			
+			HelperClassBookIssueByMember.executeIssueBookQuery(queryToInsertInBookIssue);
+			System.out.println("Book has been issued.");
 		} else {
-			System.out.println("The book is already issued so can't be re-isssued");
+			System.out.println("Sorry. The book is already issued.");
 		}
 	}
 
 	public static void main(String[] args) {
 		try {
-			//Opening the connection
-			ConnectDatabase.getConnection();
-
+			DatabaseConnection.getConnection();
 			BookIssueByMember issueByMember = new BookIssueByMember();
-			//Getting the book name
+			
 			String bookName = issueByMember.getBookName();
-			//Getting the member id
 			String memberId = issueByMember.getMemberId();
 
 			issueByMember.issueBook(bookName, memberId);
 
-			//Closing the connection
-			ConnectDatabase.closeConnection();
+			DatabaseConnection.closeConnection();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
