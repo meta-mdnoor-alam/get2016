@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Contact Us</title>
+</head>
+<body>
+	<table width="85%" align="center">
+		<tr>
+			<td align="left" width="30%">
+				<img alt="HTML5 Logo" src="images/html5.png" width="50" />
+			</td>
+			<td align="right">
+				<a href="index.html">Home</a>&nbsp;&nbsp;
+				<a href="#">About</a>&nbsp;&nbsp;
+				<a href="#">Product</a>&nbsp;&nbsp;
+				<a href="#">Gallery</a>&nbsp;&nbsp;
+				<a href="contactUs.html">Contact</a>&nbsp;&nbsp;
+			</td>
+		</tr>
+	</table>
+	<hr width="99%" size="2" />
+	<br />
+	<br />
+	<center>
+		<img alt="Features" src="images/contact.jpg" width="85%" />
+	</center>
+	<br/>
+	<br/>
+	<br/>
+	<form method="post">
+		<table align="center" width="30%">
+			<tr align="left">
+				<td width="30%">
+					<label>Name</label>
+				</td>
+				<td>
+					<input type="text" placeholder="Enter your name" name="name" size="30"/>
+				</td>
+			</tr>
+			<tr align="left">
+				<td width="30%">
+					<label>Email</label>
+				</td>
+				<td>
+					<input type="email" placeholder="Enter your mailId" name="email" size="30"/>
+				</td>
+			</tr>
+			<tr align="left">
+				<td width="30%">
+					<label>City</label>
+				</td>
+				<td>
+					<select name="city">
+						<option value="">--Select--</option>
+						<option value="jaipur">Jaipur</option>
+						<option value="udaipur">Udaipur</option>
+						<option value="ajmer">Ajmer</option>
+						<option value="delhi">Delhi</option>
+						<option value="gurgaon">Gurgaon</option>
+						<option value="kolkata">Kolkata</option>
+					</select>
+				</td>
+			</tr>
+			<tr align="left">
+				<td width="30%">
+					<label>Organization Name</label>
+				</td>
+				<td>
+					<input type="text" placeholder="Enter your Organization Name" name="orgName" size="30"/>
+				</td>
+			</tr>
+			<tr align="left">
+				<td width="30%">
+					<label>Contact Number</label>
+				</td>
+				<td>
+					<input type="text" value="+91" size="3" readonly="readonly"/>
+					<input type="text" placeholder="Enter your Contact Number" name="contactNumber" size="22" maxlength="10"/>
+				</td>
+			</tr>
+			<tr align="left">
+				<td width="30%">
+					<label>Message</label>
+				</td>
+				<td>
+					<textarea rows="5" cols="32" name="message" placeholder="Enter your message"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" name="submit"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<br />
+	<hr width="99%" size="2" />
+	<center>&copy; Copyright 2016-17 | All Rights Reserved | Metacube Training</center>
+</body>
+</html>
