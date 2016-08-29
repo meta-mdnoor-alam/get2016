@@ -29,10 +29,13 @@ body {
 }
 
 #image {
-	width: 20%;
-	margin: 15px;
+	margin: 20px;
+	margin-left: 0px;
 	border: solid 3px black;
 	float: left;
+	display: inline-block;
+	width: 20%;
+	
 }
 
 #image h2 {
@@ -40,7 +43,7 @@ body {
 }
 
 #image img {
-	width: 50%;
+	width: 100%;
 }
 
 #profile {
