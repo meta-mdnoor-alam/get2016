@@ -3,7 +3,7 @@
 }
 
 #wrapper {
-	background-image: url("images/background.jpg");
+	background-image: url("../images/background.jpg");
 	display: block;
 	width: 100%;
 	float: left;
@@ -13,11 +13,10 @@
 	margin: 15px 20px;
 }
 
-#heading {
+#header {
 	background-color: #afd1ed;
 	text-align: center;
 	padding: 20px;
-	border-radius: 15px 15px 0px 0px;
 }
 
 #navigation {
@@ -77,23 +76,21 @@
 }
 
 #right-block {
-	display: block;
+	display: inline;
 	width: 28%;
 	padding: 10px;
-	float: left;
+	float: right;
 }
 
 .block {
 	padding: 10px;
 	background-color: #b1bec7;
-	border-radius: 10px;
 	margin: 10px;
 	text-align: justify;
 }
 
 .block h3 {
 	background-color: #e2e7ea;
-	border-radius: 7px;
 	padding: 5px;
 	padding-left: 15px;
 	margin-bottom: 15px;
