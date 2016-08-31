@@ -9,6 +9,7 @@ Design the given form with proper HTML5 validations. On the invalid entry make t
 ###Assignment 2 : (createSVG)
 
 Create the following images using SVG. (You need to create a seperate .svg file for every image).
+
 ![capture](https://cloud.githubusercontent.com/assets/20415358/18126110/3ea188ee-6f97-11e6-8247-9431ba13ad30.PNG)
 
 ###Assignment 3 : (CreateCancas)
