@@ -1,0 +1,50 @@
+#wrapper {
+	height: auto;
+	float: left;
+	width: 80%;
+	margin-top: 200px;
+	margin-left: 10%;
+	display: flex;
+    justify-content: space-between;
+}
+
+#firstDivWrapper, #secondDivWrapper, #thirdDivWrapper, #fourthDivWrapper, #fifthDivWrapper {
+	display: inline-block;
+	float: left;
+}
+
+#firstDiv, #secondDiv, #thirdDiv, #fourthDiv, #fifthDiv {
+	background-color: #005ce6;
+	height: 100px;
+	width: 100px;
+	display: block;
+	color: #ffff80;
+	display: block;
+	Transition: transform 1s;
+}
+
+span {
+	bottom: 0;
+	text-align: center;
+	display: block;
+	left: 20px;
+	right: 25px;
+}
+
+#firstDiv:hover {
+	transform: rotate(360deg);
+}
+
+#secondDiv:hover {
+	Transition: transform 500ms;
+	transform: scale(2,2);
+}
+
+#thirdDiv:hover {
+	transform: skew(50deg,50deg);
+}
+
+#fourthDiv:hover {
+	Transition: transform 400ms;
+	transform: translate(100px,-100px);
+}
