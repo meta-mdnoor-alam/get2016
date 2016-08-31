@@ -3,10 +3,15 @@
 ###Assignment 1 : (TransformDivElements)
 
 Make 5 DIVs of 100px height and width
+
 1. Apply the rotate effect on the first div on hover with transition
+
 2. Apply the scale effect on the second div on hover with transition
+
 3. Apply the skew effect on the third div on hover with tranisition
+
 4. Apply the translate effect on the forth div on hover with tranisition
+
 
 
 ###Assignment 2 : (WebPage)
